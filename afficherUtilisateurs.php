@@ -1,5 +1,5 @@
 <?PHP
-	require "../controller/UtilisateurC.php";
+	include "../controller/UtilisateurC.php";
 
 	$utilisateurC=new UtilisateurC();
 	$listeUsers=$utilisateurC->afficherUtilisateurs();
@@ -20,37 +20,28 @@
 				<th>Id</th>
 				<th>Nom</th>
 				<th>Prenom</th>
-				<th>Email</th>
-				<th>Password</th>
-				<th>Adresse</th>
-				<th>Date_de_naissance</th>
-				<th>Telephone</th>
+				<th>email</th>
+				<th>telephone</th>
 				<th>supprimer</th>
-				<th>modifier</th>
+				
 			</tr>
 
 			<?PHP
 				foreach($listeUsers as $user){
 			?>
 				<tr>
-					<td><?PHP echo $user['Id']; ?></td>
-					<td><?PHP echo $user['Nom']; ?></td>
-					<td><?PHP echo $user['Prenom']; ?></td>
-					<td><?PHP echo $user['Email']; ?></td>
-					<td><?PHP echo $user['Password']; ?></td>
-					<td><?PHP echo $user['Adresse']; ?></td>
-					<td><?PHP echo $user['Date_de_naissance']; ?></td>
-					<td><?PHP echo $user['Telephone']; ?></td>
-					
+					<td><?PHP echo $user['id']; ?></td>
+					<td><?PHP echo $user['nom']; ?></td>
+					<td><?PHP echo $user['prenom']; ?></td>
+					<td><?PHP echo $user['email']; ?></td>
+					<td><?PHP echo $user['telephone']; ?></td>
 					<td>
-						<form method="POST" action="supprimerUtilisateur.php">
+						<form method="POST" action="supprimerUtilisateurs.php">
 						<input type="submit" name="supprimer" value="supprimer">
-						<input type="hidden" value=<?PHP echo $user['Id']; ?> name="id">
+						<input type="hidden" value=<?PHP echo $user['id']; ?> name="id">
 						</form>
 					</td>
-					<td>
-						<a href="modifierUtilisateur.php?id=<?PHP echo $user['Id']; ?>"> Modifier </a>
-					</td>
+					
 				</tr>
 			<?PHP
 				}
